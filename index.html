@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JWT Encoder/Decoder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="header-title">
+                    <span class="material-icons">vpn_key</span>
+                    JWT Encoder/Decoder
+                </h1>
+                <p class="header-subtitle">Encode and decode JSON Web Tokens with various algorithms</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Left Panel: Encoded JWT -->
+                <div class="panel encoded-panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">Encoded JWT</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="input-group">
+                            <label for="encoded-jwt" class="input-label">Paste your JWT token here</label>
+                            <textarea id="encoded-jwt" class="input-field jwt-input" rows="8" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"></textarea>
+                        </div>
+                        <div class="status-message" id="status-message"></div>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Decoded JWT -->
+                <div class="panel decoded-panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">Decoded JWT</h2>
+                    </div>
+                    <div class="panel-body">
+                        <!-- Header Section -->
+                        <div class="decode-section">
+                            <div class="section-header header-section">
+                                <span class="material-icons">info</span>
+                                <span>HEADER</span>
+                            </div>
+                            <div class="input-group">
+                                <label for="header-json" class="input-label">Algorithm & Token Type</label>
+                                <textarea id="header-json" class="input-field json-input" rows="4" placeholder='{"alg": "HS256", "typ": "JWT"}'></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Payload Section -->
+                        <div class="decode-section">
+                            <div class="section-header payload-section">
+                                <span class="material-icons">description</span>
+                                <span>PAYLOAD</span>
+                            </div>
+                            <div class="input-group">
+                                <label for="payload-json" class="input-label">Data</label>
+                                <textarea id="payload-json" class="input-field json-input" rows="6" placeholder='{"sub": "1234567890", "name": "John Doe", "iat": 1516239022}'></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Verify Signature Section -->
+                        <div class="decode-section">
+                            <div class="section-header signature-section">
+                                <span class="material-icons">verified_user</span>
+                                <span>VERIFY SIGNATURE</span>
+                            </div>
+                            <div class="input-group">
+                                <label for="algorithm" class="input-label">Algorithm</label>
+                                <select id="algorithm" class="input-field select-field">
+                                    <optgroup label="HMAC">
+                                        <option value="HS256" selected>HS256</option>
+                                        <option value="HS384">HS384</option>
+                                        <option value="HS512">HS512</option>
+                                    </optgroup>
+                                    <optgroup label="RSA">
+                                        <option value="RS256">RS256</option>
+                                        <option value="RS384">RS384</option>
+                                        <option value="RS512">RS512</option>
+                                    </optgroup>
+                                    <optgroup label="ECDSA">
+                                        <option value="ES256">ES256</option>
+                                        <option value="ES384">ES384</option>
+                                        <option value="ES512">ES512</option>
+                                    </optgroup>
+                                    <optgroup label="RSA-PSS">
+                                        <option value="PS256">PS256</option>
+                                        <option value="PS384">PS384</option>
+                                        <option value="PS512">PS512</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="secret" class="input-label">Secret / Public Key</label>
+                                <textarea id="secret" class="input-field secret-input" rows="4" placeholder="your-256-bit-secret"></textarea>
+                            </div>
+                            <div class="button-group">
+                                <button id="encode-btn" class="btn btn-primary">
+                                    <span class="material-icons">lock</span>
+                                    Encode JWT
+                                </button>
+                                <button id="decode-btn" class="btn btn-secondary">
+                                    <span class="material-icons">lock_open</span>
+                                    Decode JWT
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                Built with <a href="https://github.com/panva/jose" target="_blank">panva/jose</a> | 
+                <a href="https://github.com/adrienpessu/jwt-tools" target="_blank">View on GitHub</a>
+            </p>
+        </div>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
