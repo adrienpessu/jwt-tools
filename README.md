@@ -1,6 +1,6 @@
 # JWT Encoder/Decoder
 
-A modern, Material Design-based web tool for encoding and decoding JSON Web Tokens (JWT). Built with HTML, CSS, and JavaScript using the [panva/jose](https://github.com/panva/jose) library.
+A modern, front-end only web tool for encoding and decoding JSON Web Tokens (JWT). Built with HTML, CSS, and JavaScript using the [panva/jose](https://github.com/panva/jose) library.
 
 🔗 **[Live Demo](https://adrienpessu.github.io/jwt-tools/)**
 
